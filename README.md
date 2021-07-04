@@ -1,2 +1,2 @@
 # Alarm-app
-Its a simple alarm application project with included timer and stopwatch
+Require Android API 23 or upper (Android 6.0.0).
