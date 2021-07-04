@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    android:id="@+id/alert_bottom_sheet"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    android:orientation="vertical"
+    android:background="@color/Light_Black_L">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="@string/alert_mode"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@color/dryBlack"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/Light_white"/>
+
+      <RelativeLayout
+          android:id="@+id/ring_layout"
+          android:layout_width="match_parent"
+          android:layout_height="45dp"
+          android:descendantFocusability="blocksDescendants"
+          android:foreground="?attr/selectableItemBackground">
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/ring_txt_view"
+                  android:text="@string/ring"
+                  android:textColor="@color/white"
+                  android:textSize="20sp"
+                  android:layout_centerVertical="true"
+                  android:layout_marginStart="15dp"
+                  android:clickable="false"
+                  android:focusableInTouchMode="false"
+                  android:focusable="false"/>
+
+              <RadioButton
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/ring_radio_btn"
+                  android:layout_alignParentEnd="true"
+                  android:layout_centerVertical="true"
+                  android:layout_marginEnd="10dp"
+                  android:clickable="false"
+                  android:focusableInTouchMode="false"
+                  android:focusable="false"
+                  android:theme="@style/RadioButton"/>
+
+      </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/Light_white"/>
+
+        <RelativeLayout
+            android:id="@+id/ring_vibrate_layout"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:descendantFocusability="blocksDescendants"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ring_vibrate_txt_view"
+                    android:text="@string/ring_vibrate"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:clickable="false"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ring_vibrate_radio_btn"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:clickable="false"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"
+                    android:theme="@style/RadioButton"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/Light_white"/>
+
+        <RelativeLayout
+            android:id="@+id/vibrate_layout"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:descendantFocusability="blocksDescendants"
+            android:foreground="?attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/vibrate_txt_view"
+                    android:text="@string/vibrate"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:clickable="false"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/vibrate_radio_btn"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:clickable="false"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"
+                    android:theme="@style/RadioButton"/>
+
+        </RelativeLayout>
+
+</LinearLayout>

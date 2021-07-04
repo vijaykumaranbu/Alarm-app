@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/main/res/raw/aerials.mp3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/raw/hypnotize.mp3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/raw/soad_radio.mp3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/raw/soad_radio_solo.mp3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/raw/sound_system.mp3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/raw/system_activated.mp3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/raw/system_hand.mp3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/raw/system_if_a_down.mp3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/raw/system_of_a_down (1).mp3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/raw/system_of_a_down.mp3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/raw/system_shock_2_triop.mp3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/raw/tribute_to_soad.mp3" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.TimerFragment">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+         <com.google.android.material.appbar.MaterialToolbar
+             android:id="@+id/toolBar"
+             android:layout_width="match_parent"
+             android:layout_height="45dp"
+             android:layout_alignParentTop="true"
+             android:background="@color/dryBlack">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginEnd="18dp">
+
+            <TextView
+                android:id="@+id/timerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Timer"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ringtoneTxt"
+                android:text="Ringtone"
+                android:textColor="@color/Light_Blue"
+                android:textSize="18sp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+         </com.google.android.material.appbar.MaterialToolbar>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="220dp"
+          android:orientation="horizontal"
+          android:id="@+id/hTimePickerLayout"
+          android:layout_below="@+id/toolBar">
+
+            <NumberPicker
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/hTimePicker"
+                android:descendantFocusability="blocksDescendants"
+                android:theme="@style/NumberPickerTheme"/>
+
+            <NumberPicker
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/mTimePicker"
+                android:descendantFocusability="blocksDescendants"
+                android:theme="@style/NumberPickerTheme"/>
+
+      </LinearLayout>
+
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="100dp"
+             android:layout_marginTop="80dp"
+             android:id="@+id/countDownView"
+             android:textColor="@color/white"
+             android:textSize="70sp"
+             android:gravity="center"
+             android:layout_below="@+id/toolBar"/>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="20dp"
+             android:layout_marginEnd="20dp"
+             android:orientation="horizontal"
+             android:layout_below="@+id/hTimePickerLayout"
+             android:layout_marginTop="30dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/timerStartStopBtn"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Start"
+                android:textSize="18sp"
+                android:textAllCaps="false"
+                android:textColor="@color/Green"
+                android:background="@drawable/bottom_bg" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/timerResetBtn"
+                android:layout_weight="1"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Reset"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textAllCaps="false"
+                android:background="@drawable/bottom_bg"/>
+         </LinearLayout>
+
+   </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:fitsSystemWindows="true"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    tools:context=".activities.AddAlarmActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/add_alarm_toolbar"
+        android:background="@color/dryBlack"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/alarmCancel"
+                android:text="@string/cancel"
+                android:textColor="@color/Light_Blue"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/add_alarm"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:id="@+id/alarmDone"
+                android:text="@string/done"
+                android:textColor="@color/Light_Blue"
+                android:textSize="18sp"
+                android:textAlignment="viewEnd"/>
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/add_alarm_toolbar"
+        android:orientation="vertical">
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_weight="1">
+    <TimePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/alarm_time_picker_view"
+        android:timePickerMode="spinner"
+        android:overScrollMode="always"/>
+   </LinearLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:background="@drawable/listview_bg">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:id="@+id/repeat_linear_layout"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:layout_weight="1"
+                        android:text="@string/repeat"
+                        android:textColor="@color/white"
+                        android:textStyle="normal"
+                        android:textSize="18sp"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:layout_weight="1"
+                        android:id="@+id/repeat_txt_view"
+                        android:textColor="#B2B2B2"
+                        android:textStyle="normal"
+                        android:textSize="15sp"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+
+                    <!--    <ImageView-->
+                    <!--        android:layout_width="wrap_content"-->
+                    <!--        android:layout_height="wrap_content"-->
+                    <!--        android:layout_alignParentEnd="true"-->
+                    <!--        android:src="@drawable/ic_forward_arrow"-->
+                    <!--        android:layout_centerVertical="true"-->
+                    <!--        android:layout_marginEnd="15dp"-->
+                    <!--        android:clickable="false"-->
+                    <!--        android:focusable="false"-->
+                    <!--        android:focusableInTouchMode="false"/>-->
+
+                </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:background="@color/Light_white"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="45dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false">
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:id="@+id/sun_txt_view"
+                    android:text="@string/sun"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:gravity="center"
+                    android:background="@drawable/day_selector"/>
+
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toEndOf="@+id/sun_txt_view"
+                    android:layout_marginEnd="5dp"
+                    android:id="@+id/mon_txt_view"
+                    android:text="@string/mon"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:gravity="center"
+                    android:background="@drawable/day_selector"/>
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toEndOf="@+id/mon_txt_view"
+                    android:id="@+id/tue_txt_view"
+                    android:text="@string/tue"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:gravity="center"
+                    android:background="@drawable/day_selector"/>
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toEndOf="@+id/tue_txt_view"
+                    android:id="@+id/wed_txt_view"
+                    android:text="@string/wed"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:gravity="center"
+                    android:background="@drawable/day_selector"/>
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toEndOf="@+id/wed_txt_view"
+                    android:id="@+id/thu_txt_view"
+                    android:text="@string/thu"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:gravity="center"
+                    android:background="@drawable/day_selector"/>
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toEndOf="@+id/thu_txt_view"
+                    android:gravity="center"
+                    android:id="@+id/fri_txt_view"
+                    android:text="@string/fri"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:background="@drawable/day_selector"/>
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toEndOf="@+id/fri_txt_view"
+                    android:gravity="center"
+                    android:id="@+id/sat_txt_view"
+                    android:text="@string/sat"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:background="@drawable/day_selector"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:background="@color/Light_white"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="vertical"
+                android:id="@+id/alert_mode_linear_layout"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:layout_weight="1"
+                    android:text="@string/alert_mode"
+                    android:textColor="@color/white"
+                    android:textStyle="normal"
+                    android:textSize="18sp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="15dp"
+                    android:id="@+id/alert_mode_txt_view"
+                    android:text="@string/none"
+                    android:textColor="#B2B2B2"
+                    android:textStyle="normal"
+                    android:textSize="15sp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:background="@color/Light_white"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/ringtone_relative_layout"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ringtone_item_txt"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/ringtone"
+                    android:textColor="@color/white"
+                    android:textStyle="normal"
+                    android:textSize="18sp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+                <TextView
+                    android:id="@+id/ringtone_name_txt_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ringtone_item_txt"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_toStartOf="@+id/ringtone_arrow_image_view"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:text="@string/none"
+                    android:textColor="#B2B2B2"
+                    android:textSize="15sp"
+                    android:textStyle="normal" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/ringtone_arrow_image_view"
+                    android:src="@drawable/ic_forward_arrow"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:background="@color/Light_white"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="vertical"
+                android:id="@+id/snooze_linear_layout"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:layout_weight="1"
+                    android:text="@string/snooze"
+                    android:textColor="@color/white"
+                    android:textStyle="normal"
+                    android:textSize="18sp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:layout_weight="1"
+                    android:id="@+id/snooze_txt_view"
+                    android:text="@string/none"
+                    android:textColor="#B2B2B2"
+                    android:textStyle="normal"
+                    android:textSize="15sp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:background="@color/Light_white"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="vertical"
+                android:id="@+id/label_linear_layout"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/label"
+                    android:textColor="@color/white"
+                    android:textStyle="normal"
+                    android:textSize="18sp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:layout_weight="1"
+                    android:id="@+id/label_txt_view"
+                    android:text="@string/none"
+                    android:textColor="#B2B2B2"
+                    android:textStyle="normal"
+                    android:textSize="15sp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

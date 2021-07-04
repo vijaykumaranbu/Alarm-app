@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/snooze_bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    android:background="@color/Light_Black_L"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="@string/snooze"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="@color/dryBlack"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/Light_white"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_none"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:fitsSystemWindows="true"
+        android:descendantFocusability="blocksDescendants"
+        android:foreground="?attr/selectableItemBackground">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_none"
+            android:text="@string/none"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio_btn_none"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:theme="@style/RadioButton"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/Light_white"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_5m"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:fitsSystemWindows="true"
+        android:descendantFocusability="blocksDescendants"
+        android:foreground="?attr/selectableItemBackground">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_5m"
+            android:text="@string/_5_minutes"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio_btn_5m"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:theme="@style/RadioButton"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/Light_white"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_10m"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:fitsSystemWindows="true"
+        android:descendantFocusability="blocksDescendants"
+        android:foreground="?attr/selectableItemBackgroundBorderless">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_10m"
+            android:text="@string/_10_minutes"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio_btn_10m"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:theme="@style/RadioButton"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/Light_white"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_15m"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:fitsSystemWindows="true"
+        android:descendantFocusability="blocksDescendants"
+        android:foreground="?attr/selectableItemBackground">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_15m"
+            android:text="@string/_15_minutes"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio_btn_15m"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:theme="@style/RadioButton"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/Light_white"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_30m"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:fitsSystemWindows="true"
+        android:descendantFocusability="blocksDescendants"
+        android:foreground="?attr/selectableItemBackground">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_30m"
+        android:text="@string/_30_minutes"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="15dp"
+        android:clickable="false"
+        android:focusableInTouchMode="false"
+        android:focusable="false"/>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radio_btn_30m"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
+        android:clickable="false"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:theme="@style/RadioButton"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/Light_white"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_1h"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:fitsSystemWindows="true"
+        android:descendantFocusability="blocksDescendants"
+        android:foreground="?attr/selectableItemBackground">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_1h"
+            android:text="@string/_1_hour"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio_btn_1h"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:theme="@style/RadioButton"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

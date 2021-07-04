@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:descendantFocusability="blocksDescendants"
+    android:background="?attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/timerItemView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:gravity="top"
+            android:text="00:00"
+            android:textColor="@color/Light_white"
+            android:textSize="60sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/alarm_time_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_alignBottom="@+id/timerItemView"
+            android:layout_toEndOf="@+id/timerItemView"
+            android:text="AM"
+            android:textColor="@color/Light_white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/reminder_label_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/timerItemView"
+            android:layout_alignStart="@+id/timerItemView"
+            android:layout_marginBottom="10dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:text="Title"
+            android:textColor="@color/orange"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/reminder_day_list_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="10dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:layout_below="@id/timerItemView"
+            android:layout_toEndOf="@+id/reminder_label_view"/>
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/alarmSwitch"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="18dp"
+        android:thumb="@drawable/switch_thumb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:track="@drawable/switch_track" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/Light_white"
+        android:clickable="false"
+        android:focusable="false"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
