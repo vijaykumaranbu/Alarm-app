@@ -34,10 +34,6 @@ public class AddAlarmActivity extends AppCompatActivity implements
         LabelDialog.LabelDialogListener,
         View.OnClickListener {
 
-    private TimePicker timePicker;
-    private TextView cancel, done;
-    private LinearLayout repeatLayout, alertModeLayout, snoozeLayout, labelLayout;
-    private RelativeLayout ringtoneLayout;
     private TextView repeatView, alertModeView, ringtoneNameView, snoozeView, labelView;
     private Button sun, mon, tue, wed, thu, fri, sat;
     private AlertBottomSheetDialog alertBottomSheetDialog;
@@ -45,26 +41,27 @@ public class AddAlarmActivity extends AppCompatActivity implements
     public static final String SNOOZE_BOTTOM_SHEET_TAG = "snooze_bottom_sheet";
     public static final String ALERT_BOTTOM_SHEET_TAG = "alert_bottom_sheet";
     public static final String LABEL_TEXT = "label_text";
-    private TreeMap<Integer, String> dayMap = new TreeMap<>();
-    private int mDay, hour, mHour, mMinute;
+    private final TreeMap<Integer, String> dayMap = new TreeMap<>();
+    private int hour;
+    private int mHour;
+    private int mMinute;
     private String mTime, min, hr, mAm_Pm, mDays = "";
-    private AlarmReceiver alarmReceiver = new AlarmReceiver();
+    private final AlarmReceiver alarmReceiver = new AlarmReceiver();
     private long mRepeatTime;
-    private Calendar mCalendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_alarm);
 
-        cancel = findViewById(R.id.alarmCancel);
-        done = findViewById(R.id.alarmDone);
-        timePicker = findViewById(R.id.alarm_time_picker_view);
-        repeatLayout = findViewById(R.id.repeat_linear_layout);
-        alertModeLayout = findViewById(R.id.alert_mode_linear_layout);
-        ringtoneLayout = findViewById(R.id.ringtone_relative_layout);
-        snoozeLayout = findViewById(R.id.snooze_linear_layout);
-        labelLayout = findViewById(R.id.label_linear_layout);
+        TextView cancel = findViewById(R.id.alarmCancel);
+        TextView done = findViewById(R.id.alarmDone);
+        TimePicker timePicker = findViewById(R.id.alarm_time_picker_view);
+        LinearLayout repeatLayout = findViewById(R.id.repeat_linear_layout);
+        LinearLayout alertModeLayout = findViewById(R.id.alert_mode_linear_layout);
+        RelativeLayout ringtoneLayout = findViewById(R.id.ringtone_relative_layout);
+        LinearLayout snoozeLayout = findViewById(R.id.snooze_linear_layout);
+        LinearLayout labelLayout = findViewById(R.id.label_linear_layout);
         repeatView = findViewById(R.id.repeat_txt_view);
         alertModeView = findViewById(R.id.alert_mode_txt_view);
         ringtoneNameView = findViewById(R.id.ringtone_name_txt_view);
@@ -111,7 +108,7 @@ public class AddAlarmActivity extends AppCompatActivity implements
         Calendar calendar = Calendar.getInstance();
         mHour = calendar.get(Calendar.HOUR_OF_DAY);
         mMinute = calendar.get(Calendar.MINUTE);
-        mDay = calendar.get(Calendar.DAY_OF_WEEK);
+        int mDay = calendar.get(Calendar.DAY_OF_WEEK);
 
         timePicker.setHour(mHour);
         timePicker.setMinute(mMinute);
@@ -337,10 +334,24 @@ public class AddAlarmActivity extends AppCompatActivity implements
         if (mDays.equals("None"))
             mDays = "";
 
-        int ID = rd.addReminder(new Reminder(mHour, mMinute, mAm_Pm, mSun, mMon, mTue, mWed, mThu, mFri, mSat, mDays, mAlertMode,
-                mRingtone, mSnooze, mLabel, "true"));
+        int ID = rd.addReminder(new Reminder(mHour,
+                mMinute,
+                mAm_Pm,
+                mSun,
+                mMon,
+                mTue,
+                mWed,
+                mThu,
+                mFri,
+                mSat,
+                mDays,
+                mAlertMode,
+                mRingtone,
+                mSnooze,
+                mLabel,
+                "true"));
 
-        mCalendar = Calendar.getInstance();
+        Calendar mCalendar = Calendar.getInstance();
         mCalendar.set(Calendar.HOUR_OF_DAY, mHour);
         mCalendar.set(Calendar.MINUTE, mMinute);
         mCalendar.set(Calendar.SECOND, 0);

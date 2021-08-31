@@ -201,7 +201,7 @@ public class ReminderDataBase extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
-    public int updateReminder(Reminder reminder){
+    public void updateReminder(Reminder reminder){
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -223,7 +223,7 @@ public class ReminderDataBase extends SQLiteOpenHelper {
         values.put(KEY_LABEL,reminder.getLabel());
         values.put(KEY_ACTIVE,reminder.getActive());
 
-        return db.update(TABLE_NAME,values,KEY_ID + "=?",new String[]{String.valueOf(reminder.getID())});
+        db.update(TABLE_NAME, values, KEY_ID + "=?", new String[]{String.valueOf(reminder.getID())});
     }
 
     public void deleteReminder(int ID){

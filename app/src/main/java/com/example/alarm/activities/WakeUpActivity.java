@@ -3,10 +3,8 @@ package com.example.alarm.activities;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
 import android.view.WindowManager;
@@ -23,25 +21,20 @@ import com.example.alarm.receivers.AlarmReceiver;
 
 import java.util.Calendar;
 
-import javax.xml.validation.Validator;
-
 public class WakeUpActivity extends AppCompatActivity {
 
     public static final String ALARM_ID = "alarm_id";
     public static final String ALARM_TIME = "alarm_time";
     public static final String ALARM_URI = "alarm_uri";
     public static final String ALARM_AM_PM = "alarm_am_pm";
-    private TextView timeView, calenderView, amOrPmView;
-    private Button remindLaterBtn, alarmOffBtn;
     private static MediaPlayer mediaPlayer;
     private ReminderDataBase db;
     private Reminder reminder;
-    private Calendar calendar;
     private Vibrator vibrator;
     private boolean stopVibrate = false;
-    private AlarmReceiver alarmReceiver = new AlarmReceiver();
-    private String time, amOrPm, uri;
-    private String[] MONTH = {"January",
+    private final AlarmReceiver alarmReceiver = new AlarmReceiver();
+    private String uri;
+    private final String[] MONTH = {"January",
             "February",
             "March",
             "April",
@@ -67,11 +60,11 @@ public class WakeUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_screen);
 
-        timeView = findViewById(R.id.time_view_in_alarm_screen);
-        calenderView = findViewById(R.id.date_moth_day_view);
-        amOrPmView = findViewById(R.id.am_pm_alarm_screen);
-        remindLaterBtn = findViewById(R.id.remind_later_btn);
-        alarmOffBtn = findViewById(R.id.alarm_off_btn);
+        TextView timeView = findViewById(R.id.time_view_in_alarm_screen);
+        TextView calenderView = findViewById(R.id.date_moth_day_view);
+        TextView amOrPmView = findViewById(R.id.am_pm_alarm_screen);
+        Button remindLaterBtn = findViewById(R.id.remind_later_btn);
+        Button alarmOffBtn = findViewById(R.id.alarm_off_btn);
 
         // it will show this activity when wakelock is fired
         this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN |
@@ -80,14 +73,14 @@ public class WakeUpActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
         id = Integer.parseInt(getIntent().getStringExtra(ALARM_ID));
-        time = getIntent().getStringExtra(ALARM_TIME);
-        amOrPm = getIntent().getStringExtra(ALARM_AM_PM);
+        String time = getIntent().getStringExtra(ALARM_TIME);
+        String amOrPm = getIntent().getStringExtra(ALARM_AM_PM);
         uri = getIntent().getStringExtra(ALARM_URI);
 
         db = new ReminderDataBase(getApplicationContext());
         reminder = db.getReminder(id);
 
-        calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         int month = calendar.get(Calendar.MONTH);
         int date = calendar.get(Calendar.DATE);
         int day = calendar.get(Calendar.DAY_OF_WEEK);

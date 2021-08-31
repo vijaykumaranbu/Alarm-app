@@ -16,8 +16,8 @@ import java.util.List;
 
 public class RingtoneListAdapter extends BaseAdapter {
 
-    private Context context;
-    private List<String> ringtoneTitleList;
+    private final Context context;
+    private final List<String> ringtoneTitleList;
     private int selectedPosition = -1;
 
     public RingtoneListAdapter(Context context, List<String> ringtoneTitleList) {

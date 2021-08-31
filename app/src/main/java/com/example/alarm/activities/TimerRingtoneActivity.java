@@ -15,9 +15,7 @@ import com.example.alarm.dataBase.SharedPreference;
 
 public class TimerRingtoneActivity extends AppCompatActivity {
 
-    private ListView ringtoneListView;
     private RingtoneListAdapter adapter;
-    private ImageView back;
     public static MediaPlayer mediaPlayer;
     public int savedPosition;
     public static final String RINGTONE_POSITION_TAG = "position";
@@ -27,8 +25,8 @@ public class TimerRingtoneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ringtone);
 
-        ringtoneListView = findViewById(R.id.RingtoneListView);
-        back = findViewById(R.id.back_ImageView);
+        ListView ringtoneListView = findViewById(R.id.RingtoneListView);
+        ImageView back = findViewById(R.id.back_ImageView);
 
         adapter = new RingtoneListAdapter(TimerRingtoneActivity.this, SharedPreference.ringtoneTitleList);
         ringtoneListView.setAdapter(adapter);

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class TimeCountAdapter extends ArrayAdapter<CountList> {
 
-    private Context context;
+    private final Context context;
 
     public TimeCountAdapter(@NonNull Context context, int resource, ArrayList<CountList> Objects) {
         super(context, resource, Objects);

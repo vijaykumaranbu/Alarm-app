@@ -11,17 +11,15 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.alarm.dataBase.SharedPreference;
 import com.example.alarm.R;
+import com.example.alarm.dataBase.SharedPreference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class SnoozeBottomSheetDialog extends BottomSheetDialogFragment {
 
     private SnoozeBottomSheetListener listener;
     private RadioButton radioBtnNone,radioBtn5m,radioBtn10m,radioBtn15m,radioBtn30m,radioBtn1h;
-    private RelativeLayout layoutNone,layout5m,layout10m,layout15m,layout30m,layout1h;
     public static final String SNOOZE_MODE_TAG = "snooze_mode";
-    private String snoozeMode;
 
     @Nullable
     @Override
@@ -35,12 +33,12 @@ public class SnoozeBottomSheetDialog extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        layoutNone = view.findViewById(R.id.layout_none);
-        layout5m = view.findViewById(R.id.layout_5m);
-        layout10m = view.findViewById(R.id.layout_10m);
-        layout15m = view.findViewById(R.id.layout_15m);
-        layout30m = view.findViewById(R.id.layout_30m);
-        layout1h = view.findViewById(R.id.layout_1h);
+        RelativeLayout layoutNone = view.findViewById(R.id.layout_none);
+        RelativeLayout layout5m = view.findViewById(R.id.layout_5m);
+        RelativeLayout layout10m = view.findViewById(R.id.layout_10m);
+        RelativeLayout layout15m = view.findViewById(R.id.layout_15m);
+        RelativeLayout layout30m = view.findViewById(R.id.layout_30m);
+        RelativeLayout layout1h = view.findViewById(R.id.layout_1h);
 
         radioBtnNone = view.findViewById(R.id.radio_btn_none);
         radioBtn5m = view.findViewById(R.id.radio_btn_5m);
@@ -49,18 +47,25 @@ public class SnoozeBottomSheetDialog extends BottomSheetDialogFragment {
         radioBtn30m = view.findViewById(R.id.radio_btn_30m);
         radioBtn1h = view.findViewById(R.id.radio_btn_1h);
 
-        snoozeMode = SharedPreference.getPreferenceDataString(SNOOZE_MODE_TAG);
+        String snoozeMode = SharedPreference.getPreferenceDataString(SNOOZE_MODE_TAG);
 
-        if(snoozeMode.equals("None"))
-            radioBtnNone.setChecked(true);
-        else if (snoozeMode.equals("5 Minutes"))
-            radioBtn5m.setChecked(true);
-        else if (snoozeMode.equals("10 Minutes"))
-            radioBtn10m.setChecked(true);
-        else if (snoozeMode.equals("15 Minutes"))
-            radioBtn15m.setChecked(true);
-        else if (snoozeMode.equals("1 Hour"))
-            radioBtn1h.setChecked(true);
+        switch (snoozeMode) {
+            case "None":
+                radioBtnNone.setChecked(true);
+                break;
+            case "5 Minutes":
+                radioBtn5m.setChecked(true);
+                break;
+            case "10 Minutes":
+                radioBtn10m.setChecked(true);
+                break;
+            case "15 Minutes":
+                radioBtn15m.setChecked(true);
+                break;
+            case "1 Hour":
+                radioBtn1h.setChecked(true);
+                break;
+        }
 
         layoutNone.setOnClickListener(new View.OnClickListener() {
             @Override

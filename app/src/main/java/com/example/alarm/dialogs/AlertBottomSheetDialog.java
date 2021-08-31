@@ -15,13 +15,11 @@ import com.example.alarm.dataBase.SharedPreference;
 import com.example.alarm.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-public class AlertBottomSheetDialog extends BottomSheetDialogFragment  {
+public class AlertBottomSheetDialog extends BottomSheetDialogFragment {
 
     private AlertBottomSheetListener listener;
     private RadioButton ringRadioBtn,ringVibrateRadioBtn,vibrateRadioBtn;
-    private RelativeLayout ringLayout,ringVibrateLayout,vibrateLayout;
     public static final String ALERT_MODE_TAG = "alert_mode";
-    private String alertMode;
 
     public AlertBottomSheetDialog(){}
 
@@ -35,15 +33,15 @@ public class AlertBottomSheetDialog extends BottomSheetDialogFragment  {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        ringLayout = view.findViewById(R.id.ring_layout);
-        ringVibrateLayout = view.findViewById(R.id.ring_vibrate_layout);
-        vibrateLayout = view.findViewById(R.id.vibrate_layout);
+        RelativeLayout ringLayout = view.findViewById(R.id.ring_layout);
+        RelativeLayout ringVibrateLayout = view.findViewById(R.id.ring_vibrate_layout);
+        RelativeLayout vibrateLayout = view.findViewById(R.id.vibrate_layout);
 
         ringRadioBtn = view.findViewById(R.id.ring_radio_btn);
         ringVibrateRadioBtn = view.findViewById(R.id.ring_vibrate_radio_btn);
         vibrateRadioBtn = view.findViewById(R.id.vibrate_radio_btn);
 
-        alertMode = SharedPreference.getPreferenceDataString(ALERT_MODE_TAG);
+        String alertMode = SharedPreference.getPreferenceDataString(ALERT_MODE_TAG);
 
         if(alertMode.equals("Ring")){
             ringRadioBtn.setChecked(true);

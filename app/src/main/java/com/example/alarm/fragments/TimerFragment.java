@@ -5,9 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,16 +14,18 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.alarm.R;
-import com.example.alarm.dataBase.SharedPreference;
 import com.example.alarm.activities.TimerRingtoneActivity;
+import com.example.alarm.dataBase.SharedPreference;
 
 import java.util.Locale;
 
 public class TimerFragment extends Fragment {
 
     private NumberPicker hTimePicker,mTimePicker;
-    private Button ssBtn,rBtn;
+    private Button ssBtn;
     private TextView countDownView;
     private CountDownTimer countDownTimer;
     private boolean isRunning = false;
@@ -35,7 +34,6 @@ public class TimerFragment extends Fragment {
     private int hourTP,minTP;
     private long endTimeInMillis;
     private int hour,min,sec;
-    private TextView ringtoneText;
     private static MediaPlayer mediaPlayer;
 
     public TimerFragment() {
@@ -48,11 +46,11 @@ public class TimerFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_timer, container, false);
 
-        ringtoneText = view.findViewById(R.id.ringtoneTxt);
+        TextView ringtoneText = view.findViewById(R.id.ringtoneTxt);
         hTimePicker = view.findViewById(R.id.hTimePicker);
         mTimePicker = view.findViewById(R.id.mTimePicker);
         ssBtn = view.findViewById(R.id.timerStartStopBtn);
-        rBtn = view.findViewById(R.id.timerResetBtn);
+        Button rBtn = view.findViewById(R.id.timerResetBtn);
         countDownView = view.findViewById(R.id.countDownView);
 
         hTimePicker.setMinValue(0);

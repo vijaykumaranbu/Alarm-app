@@ -1,9 +1,11 @@
 package com.example.alarm.activities;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements DeleteAlarmBottom
 
     private BottomNavigationView bottomNavigationView;
     private Fragment fragment;
-    private final int STORAGE_PERMISSION_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +42,13 @@ public class MainActivity extends AppCompatActivity implements DeleteAlarmBottom
 
         if (ContextCompat.checkSelfPermission(
                 getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            int STORAGE_PERMISSION_CODE = 1;
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
         }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements DeleteAlarmBottom
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(MainActivity.this, "Permission Granted", Toast.LENGTH_SHORT).show();
         } else {

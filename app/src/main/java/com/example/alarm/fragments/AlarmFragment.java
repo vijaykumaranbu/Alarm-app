@@ -2,6 +2,13 @@ package com.example.alarm.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,20 +18,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import com.example.alarm.activities.AddAlarmActivity;
-import com.example.alarm.modals.ReminderItems;
 import com.example.alarm.R;
-import com.example.alarm.modals.Reminder;
+import com.example.alarm.activities.AddAlarmActivity;
 import com.example.alarm.adapters.ReminderAdapter;
 import com.example.alarm.dataBase.ReminderDataBase;
+import com.example.alarm.modals.Reminder;
+import com.example.alarm.modals.ReminderItems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +31,10 @@ import java.util.List;
 
 public class AlarmFragment extends Fragment {
 
-    private Toolbar toolbar;
     private ReminderAdapter adapter;
     private RecyclerView recyclerView;
     private TextView noAlarmTxt;
-    private RecyclerView.LayoutManager layoutManager;
     private ReminderDataBase db;
-    private List<ReminderItems> mItemList;
 
     public AlarmFragment() {
         // Required empty public constructor
@@ -50,7 +46,7 @@ public class AlarmFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_alam, container, false);
 
-        toolbar = view.findViewById(R.id.AlarmToolBar);
+        Toolbar toolbar = view.findViewById(R.id.AlarmToolBar);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
 
@@ -58,7 +54,7 @@ public class AlarmFragment extends Fragment {
         noAlarmTxt = view.findViewById(R.id.no_alarm);
 
         db = new ReminderDataBase(getContext());
-        mItemList = getData();
+        List<ReminderItems> mItemList = getData();
         List<Reminder> mList = db.getAllReminders();
         if(mList.isEmpty()){
             noAlarmTxt.setVisibility(View.VISIBLE);
@@ -68,10 +64,10 @@ public class AlarmFragment extends Fragment {
             noAlarmTxt.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
         }
-        layoutManager = new LinearLayoutManager(getContext());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        adapter = new ReminderAdapter(getContext(),activity,mItemList);
+        adapter = new ReminderAdapter(getContext(),activity, mItemList);
         recyclerView.setAdapter(adapter);
         return view;
     }
@@ -92,13 +88,10 @@ public class AlarmFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()){
-            case R.id.addAlarmMenu:
-                Intent intent = new Intent(getActivity(), AddAlarmActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                break;
+        if (item.getItemId() == R.id.addAlarmMenu) {
+            Intent intent = new Intent(getActivity(), AddAlarmActivity.class);
+            startActivity(intent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
 
@@ -146,9 +139,5 @@ public class AlarmFragment extends Fragment {
 
         adapter = new ReminderAdapter(getContext(),getActivity(),getData());
         recyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     }
 }

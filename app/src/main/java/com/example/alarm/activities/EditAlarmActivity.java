@@ -1,5 +1,6 @@
 package com.example.alarm.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,10 +36,6 @@ public class EditAlarmActivity extends AppCompatActivity implements
         LabelDialog.LabelDialogListener {
 
     public static final String REMINDER_ID = "Reminder_ID";
-    private TimePicker timePicker;
-    private TextView cancel, done;
-    private LinearLayout repeatLayout, alertModeLayout, snoozeLayout, labelLayout;
-    private RelativeLayout ringtoneLayout;
     private TextView repeatView, alertModeView, ringtoneNameView, snoozeView, labelView;
     private Button sun, mon, tue, wed, thu, fri, sat;
     private AlertBottomSheetDialog alertBottomSheetDialog;
@@ -49,27 +46,25 @@ public class EditAlarmActivity extends AppCompatActivity implements
     private Calendar mCalendar;
     private AlarmReceiver alarmReceiver;
     private Reminder mReceivedReminder;
-    private ArrayList<String> repeatList = new ArrayList<>();
-    private TreeMap<Integer, String> dayMap = new TreeMap<>();
+    private final TreeMap<Integer, String> dayMap = new TreeMap<>();
     public static final String EDIT_ALERT_BOTTOM_SHEET_TAG = "edit_alert_bottom_sheet";
     public static final String EDIT_SNOOZE_BOTTOM_SHEET_TAG = "edit_snooze_bottom_sheet";
     public static final String EDIT_LABEL_DIALOG_TAG = "edit_label_dialog";
     private ReminderDataBase db;
-    private AddAlarmActivity addAlarmActivity = new AddAlarmActivity();
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_alarm);
 
-        timePicker = findViewById(R.id.edit_alarm_time_picker);
-        cancel = findViewById(R.id.edit_alarm_Cancel);
-        done = findViewById(R.id.edit_alarm_Done);
-        repeatLayout = findViewById(R.id.edit_repeat_linear_layout);
-        alertModeLayout = findViewById(R.id.edit_alert_mode_linear_layout);
-        snoozeLayout = findViewById(R.id.edit_snooze_linear_layout);
-        labelLayout = findViewById(R.id.edit_label_linear_layout);
-        ringtoneLayout = findViewById(R.id.edit_ringtone_relative_layout);
+        TimePicker timePicker = findViewById(R.id.edit_alarm_time_picker);
+        TextView cancel = findViewById(R.id.edit_alarm_Cancel);
+        TextView done = findViewById(R.id.edit_alarm_Done);
+        LinearLayout alertModeLayout = findViewById(R.id.edit_alert_mode_linear_layout);
+        LinearLayout snoozeLayout = findViewById(R.id.edit_snooze_linear_layout);
+        LinearLayout labelLayout = findViewById(R.id.edit_label_linear_layout);
+        RelativeLayout ringtoneLayout = findViewById(R.id.edit_ringtone_relative_layout);
 
         repeatView = findViewById(R.id.edit_repeat_txt_view);
         alertModeView = findViewById(R.id.edit_alert_mode_txt_view);
@@ -240,36 +235,54 @@ public class EditAlarmActivity extends AppCompatActivity implements
         String day = dayBtn.getText().toString();
         if (dayBtn.isSelected()) {
             dayBtn.setSelected(false);
-            if (day.equals("Sun"))
-                repeatView.setText(removeDaysInRepeatView(1));
-            else if (day.equals("Mon"))
-                repeatView.setText(removeDaysInRepeatView(2));
-            else if (day.equals("Tue"))
-                repeatView.setText(removeDaysInRepeatView(3));
-            else if (day.equals("Wed"))
-                repeatView.setText(removeDaysInRepeatView(4));
-            else if (day.equals("Thu"))
-                repeatView.setText(removeDaysInRepeatView(5));
-            else if (day.equals("Fri"))
-                repeatView.setText(removeDaysInRepeatView(6));
-            else if (day.equals("Sat"))
-                repeatView.setText(removeDaysInRepeatView(7));
+            switch (day) {
+                case "Sun":
+                    repeatView.setText(removeDaysInRepeatView(1));
+                    break;
+                case "Mon":
+                    repeatView.setText(removeDaysInRepeatView(2));
+                    break;
+                case "Tue":
+                    repeatView.setText(removeDaysInRepeatView(3));
+                    break;
+                case "Wed":
+                    repeatView.setText(removeDaysInRepeatView(4));
+                    break;
+                case "Thu":
+                    repeatView.setText(removeDaysInRepeatView(5));
+                    break;
+                case "Fri":
+                    repeatView.setText(removeDaysInRepeatView(6));
+                    break;
+                case "Sat":
+                    repeatView.setText(removeDaysInRepeatView(7));
+                    break;
+            }
         } else {
             dayBtn.setSelected(true);
-            if (day.equals("Sun"))
-                repeatView.setText(addDaysInRepeatView(1, day));
-            else if (day.equals("Mon"))
-                repeatView.setText(addDaysInRepeatView(2, day));
-            else if (day.equals("Tue"))
-                repeatView.setText(addDaysInRepeatView(3, day));
-            else if (day.equals("Wed"))
-                repeatView.setText(addDaysInRepeatView(4, day));
-            else if (day.equals("Thu"))
-                repeatView.setText(addDaysInRepeatView(5, day));
-            else if (day.equals("Fri"))
-                repeatView.setText(addDaysInRepeatView(6, day));
-            else if (day.equals("Sat"))
-                repeatView.setText(addDaysInRepeatView(7, day));
+            switch (day) {
+                case "Sun":
+                    repeatView.setText(addDaysInRepeatView(1, day));
+                    break;
+                case "Mon":
+                    repeatView.setText(addDaysInRepeatView(2, day));
+                    break;
+                case "Tue":
+                    repeatView.setText(addDaysInRepeatView(3, day));
+                    break;
+                case "Wed":
+                    repeatView.setText(addDaysInRepeatView(4, day));
+                    break;
+                case "Thu":
+                    repeatView.setText(addDaysInRepeatView(5, day));
+                    break;
+                case "Fri":
+                    repeatView.setText(addDaysInRepeatView(6, day));
+                    break;
+                case "Sat":
+                    repeatView.setText(addDaysInRepeatView(7, day));
+                    break;
+            }
         }
     }
 
@@ -366,20 +379,23 @@ public class EditAlarmActivity extends AppCompatActivity implements
             mCalendar.add(Calendar.DATE, 1);
         }
 
-        if (mSnooze.equals("5 Minutes"))
-            mRepeatTime = 60000 * 5;
-
-        else if (mSnooze.equals("10 Minutes"))
-            mRepeatTime = 60000 * 10;
-
-        else if (mSnooze.equals("15 Minutes"))
-            mRepeatTime = 60000 * 15;
-
-        else if (mSnooze.equals("30 Minutes"))
-            mRepeatTime = 60000 * 30;
-
-        else if (mSnooze.equals("1 Hour"))
-            mRepeatTime = 60000 * 30 * 2;
+        switch (mSnooze) {
+            case "5 Minutes":
+                mRepeatTime = 60000 * 5;
+                break;
+            case "10 Minutes":
+                mRepeatTime = 60000 * 10;
+                break;
+            case "15 Minutes":
+                mRepeatTime = 60000 * 15;
+                break;
+            case "30 Minutes":
+                mRepeatTime = 60000 * 30;
+                break;
+            case "1 Hour":
+                mRepeatTime = 60000 * 30 * 2;
+                break;
+        }
 
         if (mSnooze.equals("None"))
             alarmReceiver.setAlarm(getApplicationContext(), mCalendar, ID);

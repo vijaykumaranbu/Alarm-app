@@ -23,12 +23,9 @@ public class DeleteAlarmBottomSheetDialog extends BottomSheetDialogFragment{
     public static final String DELETE_BUNDLE_TIME_TAG = "bottom_bundle_time";
     public static final String DELETE_BUNDLE_POSITION_TAG = "bottom_bundle_position";
     private ItemRemoveListener listener;
-    private LinearLayout delete;
-    private TextView deleteTimeTitle;
     private ReminderDataBase dataBase;
-    private ReminderAdapter adapter;
     private AlarmReceiver receiver;
-    private Context context;
+    private final Context context;
 
     DeleteAlarmBottomSheetDialog(Context context){this.context = context;}
 
@@ -48,11 +45,11 @@ public class DeleteAlarmBottomSheetDialog extends BottomSheetDialogFragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.delete_alarm_bottom_sheet,container,false);
 
-        delete = view.findViewById(R.id.delete_alarm);
-        deleteTimeTitle = view.findViewById(R.id.delete_bottom_sheet_text);
+        LinearLayout delete = view.findViewById(R.id.delete_alarm);
+        TextView deleteTimeTitle = view.findViewById(R.id.delete_bottom_sheet_text);
 
         dataBase = new ReminderDataBase(context);
-        adapter = new ReminderAdapter(context);
+        ReminderAdapter adapter = new ReminderAdapter(context);
         receiver = new AlarmReceiver();
 
         String timeTitle = getArguments().getString(DELETE_BUNDLE_TIME_TAG);

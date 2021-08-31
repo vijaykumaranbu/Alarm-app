@@ -14,8 +14,6 @@ import com.example.alarm.dataBase.SharedPreference;
 
 public class AlarmRingtoneActivity extends AppCompatActivity {
 
-    private ListView listView;
-
     private SongListAdapter songListAdapter;
     public static MediaPlayer mediaPlayer;
     private ImageView back;
@@ -26,7 +24,7 @@ public class AlarmRingtoneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_ringtone_list);
 
-        listView = findViewById(R.id.RingtoneListView);
+        ListView listView = findViewById(R.id.RingtoneListView);
         back = findViewById(R.id.ringtone_back_ImageView);
 
         songListAdapter = new SongListAdapter(this, SharedPreference.getAllAudioFromDevice(getApplicationContext()));

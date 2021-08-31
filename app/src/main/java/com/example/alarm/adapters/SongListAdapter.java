@@ -15,8 +15,8 @@ import java.util.List;
 
 public class SongListAdapter extends BaseAdapter {
 
-    private Context context;
-    private List<AudioFiles> audioList;
+    private final Context context;
+    private final List<AudioFiles> audioList;
     private int radioButtonPosition = -1;
 
     public SongListAdapter(Context context, List<AudioFiles> audioList) {

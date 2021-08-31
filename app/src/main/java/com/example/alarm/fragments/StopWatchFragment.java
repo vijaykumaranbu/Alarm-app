@@ -1,10 +1,8 @@
 package com.example.alarm.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +10,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.alarm.modals.CountList;
+import androidx.fragment.app.Fragment;
+
 import com.example.alarm.R;
 import com.example.alarm.adapters.TimeCountAdapter;
+import com.example.alarm.modals.CountList;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -30,7 +30,6 @@ public class StopWatchFragment extends Fragment{
     private int count = 0;
     private ArrayList<CountList> list;
     private TimeCountAdapter adapter;
-    private CountList countList;
     private Handler handler;
     private Runnable runnable;
 
@@ -117,12 +116,22 @@ public class StopWatchFragment extends Fragment{
     }
 
     private void setCountView(){
-        count += 1;
-        String stringCount = "Count " + String.valueOf(count);
-        String stringCountTime = timerView.getText().toString();
-        countList = new CountList(getContext(),stringCount,stringCountTime);
-        list.add(countList);
-        countView.setAdapter(adapter);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        count += 1;
+                        String stringCount = "Count " + count;
+                        String stringCountTime = timerView.getText().toString();
+                        CountList countList = new CountList(getContext(), stringCount, stringCountTime);
+                        list.add(countList);
+                        countView.setAdapter(adapter);
+                    }
+                });
+            }
+        }).start();
     }
 
 }

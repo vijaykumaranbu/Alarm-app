@@ -14,32 +14,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.alarm.R;
 import com.example.alarm.activities.EditAlarmActivity;
-import com.example.alarm.modals.ReminderItems;
-import com.example.alarm.receivers.AlarmReceiver;
+import com.example.alarm.dataBase.ReminderDataBase;
 import com.example.alarm.dialogs.DeleteAlarmBottomSheetDialog;
 import com.example.alarm.modals.Reminder;
-import com.example.alarm.R;
-import com.example.alarm.dataBase.ReminderDataBase;
+import com.example.alarm.modals.ReminderItems;
+import com.example.alarm.receivers.AlarmReceiver;
 
 import java.util.Calendar;
 import java.util.List;
 
 public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.ViewHolder>{
 
-    private Context context;
+    private final Context context;
     public static List<ReminderItems> items;
-    private AlarmReceiver alarmReceiver = new AlarmReceiver();
-    private EditAlarmActivity editAlarmActivity = new EditAlarmActivity();
+    private final AlarmReceiver alarmReceiver = new AlarmReceiver();
     public static final String DELETE_BOTTOM_SHEET_TAG = "delete_item";
-    private Calendar calendar;
     private Reminder reminder;
     private ReminderDataBase db;
-    private Activity activity;
 
     public ReminderAdapter(Context context,Activity activity,List<ReminderItems> list) {
         this.context = context;
-        this.activity = activity;
         items = list;
         db = new ReminderDataBase(context);
     }
@@ -150,7 +146,7 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.ViewHo
 
         reminder = db.getReminder(id);
         if(reminder != null){
-            calendar = Calendar.getInstance();
+            Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.HOUR_OF_DAY,reminder.getHour());
             calendar.set(Calendar.MINUTE,reminder.getMinute());
             calendar.set(Calendar.SECOND,0);
